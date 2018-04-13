@@ -62,3 +62,11 @@ CREATE TABLE visits (
 );
 ALTER TABLE visits ADD CONSTRAINT fk_visits_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX visits_pet_id ON visits (pet_id);
+
+CREATE TABLE sales (
+	id		INTEGER IDENTITY PRIMARY KEY,
+	title	VARCHAR(30),
+	description		VARCHAR(250),
+	discount	DOUBLE,
+	expiration_date	DATE
+);
