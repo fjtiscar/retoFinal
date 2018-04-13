@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import{ HttpClient, HttpResponse} from '@angular/common/http';
 import{ Observable } from 'rxjs/Observable'
 import{ Sale } from './sale'
+import{ environment } from '../../environments/environment'
 
 @Injectable()
 export class SaleService {
   private url: string;
 
 	constructor(private http: HttpClient) { 
-		this.url =  'localhost:3000/sales';
+		this.url =  environment.REST_API_URL+'sales';
 	}
 
   getSales(): Observable<HttpResponse<Sale[]>>{

@@ -9,7 +9,7 @@
         <th>Título</th>
         <th>Descripción</th>
         <th>Descuento</th>
-        <th>Caduca</th>
+        <th>Caducidad</th>
         <th></th>
         <th></th> 
       </tr>
@@ -20,19 +20,23 @@
           {{ sale.title }}
         </td>
         <td>
-          <div *ngFor="let spec of vet.specialties">
             {{ sale.description }}
-          </div>
         </td>
         <td>
-          <button class="btn btn-default" (click)="editVet(vet)">Edit Vet</button>
-          <button class="btn btn-default" (click)="deleteVet(vet)">Delete Vet</button>
+          {{sale.discount | number: '.2'}}%
+        </td>
+        <td>
+          {{sale.expirationDate}}
+        </td>
+        <td>
+          <button class="btn btn-default" (click)="editVet(vet)">Edit Sale</button>
+          <button class="btn btn-default" (click)="deleteVet(vet)">Delete Sale</button>
         </td>
       </tr>
       </tbody>
     </table>
     <div>
       <button class="btn btn-default" (click)="gotoHome()">Home</button>
-      <button class="btn btn-default" (click)="addVet()">Add Vet</button>
+      <button class="btn btn-default" (click)="addVet()">Add Sale</button>
     </div>
   </div>

@@ -23,11 +23,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
-import {WelcomeComponent} from './parts/welcome/welcome.component';
+import {SaleListComponent} from './sale/sale-list/sale-list.component';
 
 const appRoutes: Routes = [
-  {path: 'welcome', component: WelcomeComponent},
-  {path: '', component: WelcomeComponent},
+  {path: 'welcome', component: SaleListComponent},
+  {path: '', component: SaleListComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
