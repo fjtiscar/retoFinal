@@ -34,6 +34,7 @@ import {VetsModule} from './vets/vets.module';
 import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SaleModule} from './sale/sale.module';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SpecialtiesModule,
     PartsModule,
     BrowserAnimationsModule,
+    SaleModule,
     AppRoutingModule
   ],
   providers: [],
