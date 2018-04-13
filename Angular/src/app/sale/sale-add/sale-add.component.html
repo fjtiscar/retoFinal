@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+  <form #saleForm="ngForm" (ngSubmit)="saleUp()">
+    <label>Title</label>
+    <input type="text" name="title"  required [(ngModel)]="sale.title" #title="ngModel"><br>
+    <div *ngIf="!title.valid">Title is required</div> <!--AlbumId.pristine || dirty-->
+    <label>Description</label>
+    <input type="text" name="description" [(ngModel)]="sale.description" required #description="ngModel"><br>  <!--AlbumId.pristine || dirty-->
+    <div *ngIf="!description.valid">Description is required</div>
+    <label>Discount</label>
+    <input type="number" name="discount" [(ngModel)]="sale.discount" required #discount="ngModel"><br> <!--AlbumId.pristine || dirty-->
+    <div *ngIf="!discount.valid">Discount is required</div>
+    <label>Url</label>
+    <input type="date" name="expirationDate" [(ngModel)]="sale.expirationDate" required #expirationDate="ngModel"><br> <!--AlbumId.pristine || dirty-->
+    <div *ngIf="!expirationDate.valid">ExpirationDate is required</div>
+    <button type="submit" name="boton" [disabled]="!saleForm.valid">Send</button>
+    <button type="reset" name="reset" (click)="reset(saleForm)">Reset</button>
+  </form>
+  </div>
+</div>

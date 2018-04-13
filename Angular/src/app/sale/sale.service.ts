@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import{ HttpClient, HttpResponse} from '@angular/common/http';
+import{ HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import{ Observable } from 'rxjs/Observable'
 import{ Sale } from './sale'
 import{ environment } from '../../environments/environment'
@@ -9,19 +9,21 @@ export class SaleService {
   private url: string;
 
 	constructor(private http: HttpClient) { 
-		this.url =  environment.REST_API_URL+'sales';
+		this.url =  environment.REST_API_URL+'/sales';
 	}
 
   getSales(): Observable<HttpResponse<Sale[]>>{
 	return this.http.get<Sale[]>(this.url, {observe: 'response'});
 	}
 
-  addSale(sale: Sale): Observable<HttpResponse<any>>{
-		return this.http.post(this.url, sale, {observe: 'response'})
+  addSale(sale: Sale): Observable<any>{
+		console.log(sale)
+		const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+		return this.http.post(this.url, JSON.stringify(sale), {headers: headers})
 	}
 
-  deleteSale(sale: Sale): Observable<HttpResponse<any>>{
-		return this.http.delete(this.url+'?id='+sale.id, {observe: 'response'})
+  deleteSale(saleId: number): Observable<HttpResponse<any>>{
+		return this.http.delete(this.url+'/'+saleId, {observe: 'response'})
 	}
 
   modifySale(sale: Sale): Observable<HttpResponse<any>>{
@@ -29,7 +31,11 @@ export class SaleService {
 	}
 
   getSaleId(id: number): Observable<HttpResponse<Sale[]>>{
-    return this.http.get<Sale[]>(this.url+'?id='+id, {observe: 'response'});
+    return this.http.get<Sale[]>(this.url+'/'+id, {observe: 'response'});
+	}
+  
+  getSalesNotExpired(): Observable<HttpResponse<Sale[]>>{
+	  return this.http.get<Sale[]>(this.url+'/fecha', {observe: 'response'});
 	}
 
 }
